@@ -1,14 +1,11 @@
 body {
     margin: 0;
     background-color: #ffffff;
-    color: #1a1a1a;
+    font-family: 'Courier New', Courier, monospace; /* Mono font */
     display: flex;
-    /* Metinler için Mono typeface  */
-    font-family: 'Courier New', Courier, monospace;
     line-height: 1.6;
 }
 
-/* Sol Menü (Sidebar) */
 .sidebar {
     width: 280px;
     height: 100vh;
@@ -17,13 +14,10 @@ body {
     border-right: 1px solid #f0f0f0;
 }
 
-/* Başlıklar: Montserrat  */
 h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: 1.5rem;
     margin-bottom: 5px;
-    text-transform: none; /* Büyük harf zorunluluğu yok */
 }
 
 .subtitle {
@@ -32,71 +26,69 @@ h1 {
     margin-bottom: 40px;
 }
 
-/* Proje Listesi */
 .project-list {
     list-style: none;
     padding: 0;
 }
 
-.project-list li {
-    margin-bottom: 12px;
-}
+.project-list li { margin-bottom: 12px; }
 
 .project-list a {
     text-decoration: none;
     color: #888;
-    font-size: 0.85rem;
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
-/* Hover durumunda Magenta vurgusu */
 .project-list a:hover {
-    color: #ff00ff; /* Magenta (CMY) */
+    color: #ff00ff; /* Magenta */
     padding-left: 5px;
 }
 
-/* Sağ İçerik Alanı */
 .content {
-    margin-left: 360px;
+    margin-left: 380px;
     padding: 60px;
-    max-width: 900px;
+    max-width: 850px;
 }
 
-.project {
-    margin-bottom: 120px;
-}
+.project { margin-bottom: 120px; }
 
 .project h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 15px;
-}
-
-.project p {
-    font-size: 0.85rem;
-    color: #444;
-    margin-bottom: 25px;
-    max-width: 600px;
+    border-bottom: 1px solid #ff00ff; /* Magenta alt çizgi */
+    padding-bottom: 5px;
+    display: inline-block;
 }
 
 .project img {
     width: 100%;
     height: auto;
-    display: block;
+    margin-top: 20px;
+}
+
+/* About Bölümü Tasarımı */
+.about-container {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.portrait-img {
+    width: 200px !important;
+    height: auto;
+    filter: grayscale(100%);
+}
+
+.about-text p {
+    font-size: 0.85rem;
+    margin-bottom: 15px;
 }
 
 .footer {
     position: absolute;
     bottom: 40px;
-    font-size: 0.8rem;
-}
-
-.footer a {
-    color: #1a1a1a;
-    text-decoration: underline;
-}
-
-.footer a:hover {
-    color: #ff00ff;
+    border-top: 1px solid #eee;
+    width: 200px;
+    padding-top: 10px;
 }
