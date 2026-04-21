@@ -49,9 +49,21 @@
             <img src="circus.jpg" alt="Penguin Circus Book">
         </section>
 
+        <section id="in-another-messy-universe" class="project">
+            <h2>in another messy universe</h2>
+            <p>A project constructing a 'protected universe' away from the seriousness of the outside world. It explores intimate and free moments through collage, capturing how these simple joys can create alternative worlds and possibilities.</p>
+            <img src="in-another-messy-universe.jpg" alt="in another messy universe">
+        </section>
+
+        <section id="the-camera-grandma-erzincan" class="project">
+            <h2>The Camera, Grandma & Erzincan</h2>
+            <p>An artist book that constructions a micro-history by merging photographic finds with speculative narratives. This work uses family archives and ASCII art to build a visual scenario between documentary and fiction.</p>
+            <img src="the-camera-grandma-erzincan.jpg" alt="The Camera, Grandma & Erzincan">
+        </section>
+        
         <section id="from-my-lenses" class="project">
-            <h2>Photography</h2>
-            <p>Daily rituals and visual observations. Featuring "Boğaz'da Yüzmenin Neşesi" (Paranapiacaba Festival Finalist)[cite: 97, 101].</p>
+            <h2>From my Lenses</h2>
+            <p>Daily rituals and visual observations. </p>
             <img src="bogaz.jpg" alt="Photography">
         </section>
 
@@ -72,6 +84,48 @@
             </div>
         </section>
     </main>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('.project-list a');
+    const projects = document.querySelectorAll('.project');
+
+    function showProject(id) {
+        // Tüm projeleri gizle ve linklerden aktif sınıfını kaldır
+        projects.forEach(p => p.classList.remove('active'));
+        links.forEach(l => l.classList.remove('active-link'));
+
+        // Hedef projeyi göster
+        const target = document.querySelector(id);
+        if (target) {
+            target.classList.add('active');
+        }
+        
+        // Tıklanan linki işaretle
+        const activeLink = document.querySelector(`a[href="${id}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active-link');
+        }
+    }
+
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Eğer About veya dış link değilse sayfa yenilenmesini engelle
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                showProject(href);
+            }
+        });
+    });
+
+    // Sayfa ilk açıldığında ilk projeyi göster
+    if (projects.length > 0) {
+        const firstId = '#' + projects[0].id;
+        showProject(firstId);
+    }
+});
+</script>
 
 </body>
 </html>
