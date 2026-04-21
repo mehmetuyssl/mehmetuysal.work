@@ -92,3 +92,23 @@ h1 {
     width: 200px;
     padding-top: 10px;
 }
+
+/* Projelerin başlangıç durumu: Gizli */
+.project {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Aktif olan projeyi göster */
+.project.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Magenta Vurgulu Menü Linki */
+.project-list a.active-link {
+    color: #ff00ff;
+    font-weight: bold;
+    padding-left: 10px;
+}
