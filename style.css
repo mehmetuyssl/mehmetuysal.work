@@ -66,22 +66,36 @@ h1 {
     margin-top: 20px;
 }
 
-/* About Bölümü Tasarımı */
+/* About Bölümü Tasarımı - Güncellendi */
 .about-container {
     display: flex;
-    gap: 40px;
-    margin-top: 20px;
-    align-items: center;
+    gap: 40px; /* Fotoğraf ve metin arasındaki boşluk */
+    margin-top: 30px;
+    align-items: flex-start; /* Üstten hizala */
+    flex-wrap: wrap; /* Mobilde alt alta geçmesi için */
 }
 
 .portrait-img {
-    width: 200px !important;
+    width: 250px !important; /* İstediğin o 250px sınırı */
     height: auto;
     filter: grayscale(100%);
+    border: 1px solid #eee; /* Hafif bir çerçeve (opsiyonel) */
+    transition: filter 0.5s;
+}
+
+.portrait-img:hover {
+    filter: grayscale(0%); /* Üzerine gelince renklenmesi estetik bir dokunuş */
+}
+
+.about-text {
+    flex: 1; /* Metnin kalan alanı kaplamasını sağlar */
+    min-width: 300px; /* Metin çok daralmasın */
 }
 
 .about-text p {
-    font-size: 0.85rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
     margin-bottom: 15px;
 }
 
