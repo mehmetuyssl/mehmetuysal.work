@@ -75,7 +75,7 @@ h1 {
     flex-wrap: wrap; /* Mobilde alt alta geçmesi için */
 }
 
-.portrait-img {
+.mehmet-uysal-portrait-may-25-img {
     width: 250px !important; /* İstediğin o 250px sınırı */
     height: auto;
     filter: grayscale(100%);
@@ -83,7 +83,7 @@ h1 {
     transition: filter 0.5s;
 }
 
-.portrait-img:hover {
+.mehmet-uysal-portrait-may-25-img:hover {
     filter: grayscale(0%); /* Üzerine gelince renklenmesi estetik bir dokunuş */
 }
 
