@@ -68,7 +68,22 @@
             <h2>Kamera, Anneanne & Erzincan</h2>
             <p>Basılı Kitap, 80 Sayfa, 16 x 20 cm, 2026</p>
             <p>Tipografi II dersimin projesi olan bu çalışmada, öğrencilerden memleketlerinin endemik bitkilerini tanıtan bir kitap yapmaları istenir. Bu çalışmada daha önce gitmediğim memleketim olan Erzincan'a Google Maps kamerasıyla bir yolculuk yaptım. Anneannem'in Iliç'e bağlı köyüne vardığımda, onunla karşılaşma hayali kurdum. Bu kitap, anneannemin Google Maps kamerasına köyünün endemik bitkilerini tanıttığı bir anlatıya sahiptir. ASCII ile döşenen kitapta teknoloji, doğa, duygular ve makineleşmek kavramları üzerine topluca düşündüm.</p>
-            <img src="the-camera-grandma-erzincan.jpg" alt="The Camera, Grandma & Erzincan">
+            <div class="slider-wrapper">
+        <div class="slide fade"><img src="the-camera-grandma-erzincan001.JPG"></div>
+        <div class="slide fade"><img src="the-camera-grandma-erzincan002.JPG"></div>
+        <div class="slide fade"><img src="the-camera-grandma-erzincan003.JPG"></div>
+        <div class="slide fade"><img src="the-camera-grandma-erzincan004.JPG"></div>
+        <div class="slide fade"><img src="the-camera-grandma-erzincan005.JPG"></div>
+        <div class="slide fade"><img src="the-camera-grandma-erzincan006.JPG"></div>
+        <div class="slide fade"><img src="the-camera-grandma-erzincan007.JPG"></div>
+        <div class="slide fade"><img src="the-camera-grandma-erzincan008.JPG"></div>
+        <div class="slide fade"><img src="the-camera-grandma-erzincan009.JPG"></div>
+        <div class="slide fade"><img src="the-camera-grandma-erzincan010.JPG"></div>
+        <div class="slide fade"><img src="the-camera-grandma-erzincan011.JPG"></div>
+        <div class="slide fade"><img src="the-camera-grandma-erzincan012.JPG"></div>
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
         </section>
 
         <section id="perriots-penguin-circus" class="project">
@@ -139,12 +154,6 @@
         <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
         <a class="next" onclick="changeSlide(1)">&#10095;</a>
     </div>
-
-    <div class="dots-nav">
-        <span class="dot" onclick="setSlide(1)"></span>
-        <span class="dot" onclick="setSlide(2)"></span>
-        <span class="dot" onclick="setSlide(3)"></span>
-        </div>
 </section>
 
         <section id="sketches" class="project">
@@ -216,36 +225,36 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 let currentIdx = 1;
 
-document.addEventListener('DOMContentLoaded', () => {
-    showProjectSlides(currentIdx);
-});
-
+// Slaytı değiştiren fonksiyon
 function changeSlide(n) {
     showProjectSlides(currentIdx += n);
 }
 
+// Noktalara basınca çalışan fonksiyon
 function setSlide(n) {
     showProjectSlides(currentIdx = n);
 }
 
 function showProjectSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("slide");
-    let dots = document.getElementsByClassName("dot");
+    // SADECE şu an 'active' sınıfına sahip olan projenin içindeki slaytları bul
+    const activeProject = document.querySelector('.project.active');
+    if (!activeProject) return;
+
+    const slides = activeProject.querySelectorAll('.slide');
+    const dots = activeProject.querySelectorAll('.dot');
     
     if (slides.length === 0) return; 
     
     if (n > slides.length) { currentIdx = 1 }    
     if (n < 1) { currentIdx = slides.length }
     
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-    }
+    // Sadece aktif projenin slaytlarını gizle
+    slides.forEach(slide => slide.style.display = "none");
     
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
+    // Sadece aktif projenin noktalarını temizle
+    dots.forEach(dot => dot.className = dot.className.replace(" active", ""));
     
+    // İlgili slaytı göster
     if(slides[currentIdx-1]) {
         slides[currentIdx-1].style.display = "block";  
     }
@@ -253,6 +262,10 @@ function showProjectSlides(n) {
         dots[currentIdx - 1].className += " active";
     }
 }
+
+// Projeler arası geçiş yapan (menü) fonksiyonu zaten sende vardı, 
+// o fonksiyonun sonuna şu satırı eklersen proje değişince slayt 1'den başlar:
+// currentIdx = 1; showProjectSlides(currentIdx);
 </script>
 
 </body>
