@@ -214,9 +214,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-    let currentIdx = 1;
+<script>
+let currentIdx = 1;
 
-// Sayfa ilk açıldığında slider'ı başlat
 document.addEventListener('DOMContentLoaded', () => {
     showProjectSlides(currentIdx);
 });
@@ -234,30 +234,27 @@ function showProjectSlides(n) {
     let slides = document.getElementsByClassName("slide");
     let dots = document.getElementsByClassName("dot");
     
-    if (slides.length === 0) return; // Slider yoksa çalışma
+    if (slides.length === 0) return; 
     
     if (n > slides.length) { currentIdx = 1 }    
     if (n < 1) { currentIdx = slides.length }
     
-    // Tüm slaytları gizle
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";  
     }
     
-    // Tüm noktaların 'active' sınıfını kaldır
     for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
     
-    // Sadece aktif olanı göster
-    slides[currentIdx - 1].style.display = "block";  
-    if (dots.length > 0) {
+    if(slides[currentIdx-1]) {
+        slides[currentIdx-1].style.display = "block";  
+    }
+    if (dots.length > 0 && dots[currentIdx - 1]) {
         dots[currentIdx - 1].className += " active";
     }
 }
-
-// Opsiyonel: 5 saniyede bir otomatik aksın
-setInterval(() => { changeSlide(1); }, 5000);
+</script>
 
 </body>
 </html>
