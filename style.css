@@ -126,3 +126,69 @@ h1 {
     font-weight: bold;
     padding-left: 10px;
 }
+
+/* Slider Konteynırı */
+.slider-wrapper {
+    position: relative;
+    max-width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.slide {
+    display: none; /* Başlangıçta hepsi gizli */
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ok Butonları */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: rgba(0,0,0,0.2); /* Hafif şeffaf siyah */
+    user-select: none;
+    transition: 0.3s;
+}
+
+.next { right: 0; }
+.prev:hover, .next:hover { background-color: #ff00ff; } /* Üzerine gelince Magenta */
+
+/* Alt Noktalar */
+.dots-nav {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 8px;
+    width: 8px;
+    margin: 0 4px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.dot.active, .dot:hover { background-color: #ff00ff; } /* Aktif nokta Magenta */
+
+/* Geçiş Efekti */
+.fade {
+    animation: fadeEffect 0.8s;
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0.4} 
+    to {opacity: 1}
+}
