@@ -107,7 +107,45 @@
             <h2>Seçilmiş Fotoğraflar</h2>
             <p>Dijital & analog, 2024 - 2026</p>
             <p>Günlük gözlemlerimden çıkan fotoğraf kareleri. Gündelik hayatın pratikleri, absürtlükler ve birlikte var olmak baktığım yerlerdir.</p>
-            <img src="bogaz.jpg" alt="Photography">
+            <div class="slider-wrapper">
+        <div class="slide fade"><img src="selected-photos-001.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-002.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-003.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-004.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-005.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-006.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-007.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-008.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-009.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-010.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-011.png"></div>
+        <div class="slide fade"><img src="selected-photos-012.png"></div>
+        <div class="slide fade"><img src="selected-photos-013.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-014.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-015.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-016.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-017.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-018.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-019.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-020.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-022.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-023.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-024.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-025.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-026.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-027.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-028.JPEG"></div>
+        <div class="slide fade"><img src="selected-photos-029.JPEG"></div>
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+
+    <div class="dots-nav">
+        <span class="dot" onclick="setSlide(1)"></span>
+        <span class="dot" onclick="setSlide(2)"></span>
+        <span class="dot" onclick="setSlide(3)"></span>
+        </div>
+</section>
         </section>
 
         <section id="sketches" class="project">
@@ -175,6 +213,51 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
+
+    let currentIdx = 1;
+
+// Sayfa ilk açıldığında slider'ı başlat
+document.addEventListener('DOMContentLoaded', () => {
+    showProjectSlides(currentIdx);
+});
+
+function changeSlide(n) {
+    showProjectSlides(currentIdx += n);
+}
+
+function setSlide(n) {
+    showProjectSlides(currentIdx = n);
+}
+
+function showProjectSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("slide");
+    let dots = document.getElementsByClassName("dot");
+    
+    if (slides.length === 0) return; // Slider yoksa çalışma
+    
+    if (n > slides.length) { currentIdx = 1 }    
+    if (n < 1) { currentIdx = slides.length }
+    
+    // Tüm slaytları gizle
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    
+    // Tüm noktaların 'active' sınıfını kaldır
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    
+    // Sadece aktif olanı göster
+    slides[currentIdx - 1].style.display = "block";  
+    if (dots.length > 0) {
+        dots[currentIdx - 1].className += " active";
+    }
+}
+
+// Opsiyonel: 5 saniyede bir otomatik aksın
+setInterval(() => { changeSlide(1); }, 5000);
 
 </body>
 </html>
