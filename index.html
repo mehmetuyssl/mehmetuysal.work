@@ -225,47 +225,42 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 let currentIdx = 1;
 
-// Slaytı değiştiren fonksiyon
+// Slaytları değiştiren ana fonksiyon
 function changeSlide(n) {
     showProjectSlides(currentIdx += n);
 }
 
-// Noktalara basınca çalışan fonksiyon
-function setSlide(n) {
-    showProjectSlides(currentIdx = n);
-}
-
 function showProjectSlides(n) {
-    // SADECE şu an 'active' sınıfına sahip olan projenin içindeki slaytları bul
+    // Sadece şu an 'active' sınıfına sahip olan projeyi (sayfayı) bul
     const activeProject = document.querySelector('.project.active');
     if (!activeProject) return;
 
     const slides = activeProject.querySelectorAll('.slide');
-    const dots = activeProject.querySelectorAll('.dot');
     
+    // Eğer o projede slayt yoksa işlem yapma
     if (slides.length === 0) return; 
     
+    // Başa veya sona sarma mantığı
     if (n > slides.length) { currentIdx = 1 }    
     if (n < 1) { currentIdx = slides.length }
     
-    // Sadece aktif projenin slaytlarını gizle
+    // Tüm slaytları önce gizle
     slides.forEach(slide => slide.style.display = "none");
     
-    // Sadece aktif projenin noktalarını temizle
-    dots.forEach(dot => dot.className = dot.className.replace(" active", ""));
-    
-    // İlgili slaytı göster
+    // Sadece mevcut slaytı göster
     if(slides[currentIdx-1]) {
         slides[currentIdx-1].style.display = "block";  
     }
-    if (dots.length > 0 && dots[currentIdx - 1]) {
-        dots[currentIdx - 1].className += " active";
-    }
 }
 
-// Projeler arası geçiş yapan (menü) fonksiyonu zaten sende vardı, 
-// o fonksiyonun sonuna şu satırı eklersen proje değişince slayt 1'den başlar:
-// currentIdx = 1; showProjectSlides(currentIdx);
+// Menüden proje seçildiğinde slaytı 1. fotoğraftan başlatmak için
+document.querySelectorAll('.project-list a').forEach(link => {
+    link.addEventListener('click', () => {
+        currentIdx = 1;
+        // Kısa bir gecikmeyle slaytı başlat (projenin 'active' olması için)
+        setTimeout(() => showProjectSlides(currentIdx), 50);
+    });
+});
 </script>
 
 </body>
