@@ -24,6 +24,7 @@ h1 {
     font-size: 0.8rem;
     color: #666;
     margin-bottom: 40px;
+    line-height: 1.2; /* Bu değer satırları birbirine yaklaştırır */
 }
 
 .project-list {
@@ -323,4 +324,46 @@ h1 {
 .download-cv:hover {
     background-color: #ff00ff;
     color: white;
+}
+
+@media (max-width: 768px) {
+    /* 1. Gövdeyi dikey sırala */
+    body {
+        flex-direction: column;
+    }
+
+    /* 2. Sol menüyü (Sidebar) sayfanın üstüne al */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static; /* Sabit duruşu kaldırır */
+        padding: 30px 20px;
+        border-right: none;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* 3. Ana içeriği sola yaslamayı bırak */
+    .content {
+        margin-left: 0;
+        padding: 40px 20px;
+    }
+
+    /* 4. Home sayfasındaki görsel ve metni alt alta diz */
+    .home-container {
+        flex-direction: column;
+        align-items: center; /* Ortalar */
+        text-align: center; /* Metni ortalar */
+        gap: 20px;
+    }
+
+    .process-img {
+        width: 100% !important; /* Görseli genişletir */
+        max-width: 350px;
+    }
+
+    /* 5. Hakkında kısmındaki fotoğrafı da mobil için uyarla */
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
